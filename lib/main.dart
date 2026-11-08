@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'core/theme/app_theme.dart';
 import 'features/dashboard/dashboard_screen.dart';
 import 'features/settings/settings_screen.dart';
-import 'features/subscriptions/subscription_form_screen.dart';
 import 'features/subscriptions/subscriptions_screen.dart';
 
 final themeModeProvider = StateProvider<ThemeMode>((ref) => ThemeMode.dark);
@@ -28,7 +27,8 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: '/subscription/:id',
-        builder: (context, state) => SubscriptionFormScreen(subscriptionId: state.pathParameters['id']),
+        builder: (context, state) =>
+            SubscriptionFormScreen(subscriptionId: state.pathParameters['id']),
       ),
     ],
   );
@@ -69,7 +69,11 @@ class AppShell extends StatelessWidget {
           _ => '/',
         }),
         destinations: const [
-          NavigationDestination(icon: Icon(Icons.space_dashboard_outlined), selectedIcon: Icon(Icons.space_dashboard), label: 'Home'),
+          NavigationDestination(
+            icon: Icon(Icons.space_dashboard_outlined),
+            selectedIcon: Icon(Icons.space_dashboard),
+            label: 'Home',
+          ),
           NavigationDestination(icon: Icon(Icons.autorenew), label: 'Subscriptions'),
           NavigationDestination(icon: Icon(Icons.tune), label: 'Settings'),
         ],
